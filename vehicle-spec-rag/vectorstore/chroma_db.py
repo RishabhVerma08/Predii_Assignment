@@ -38,13 +38,10 @@ class ChromaDBService:
         # Prepare metadata (filter out non-primitive types if necessary)
         metadatas = []
         for item in chunks:
-            # Create a copy and remove large fields if needed
+            # Debugging: Simplifying metadata to check for type errors
             meta = {
-                "page_number": item.get("page_number"),
-                "chunk_char_count": item.get("chunk_char_count"),
-                "chunk_word_count": item.get("chunk_word_count"),
-                "chunk_token_count": item.get("chunk_token_count"),
-                "pdf_file": item.get("pdf_file", "unknown")
+                "pdf_file": str(item.get("pdf_file", "unknown")),
+                "page_number": int(item.get("page_number", 0)) 
             }
             metadatas.append(meta)
 
