@@ -8,7 +8,6 @@ A Retrieval-Augmented Generation (RAG) system designed to extract structured veh
 - **RAG Architecture**: Retrieves relevant context from vector storage to ground LLM responses.
 - **Interactive UI**: Clean, responsive web interface for chatting with your manuals.
 - **Manual Management**: drag-and-drop upload functionality to replace and index new manuals instantly.
-- **Dynamic Prompting**: Custom "System Prompt" editor allowing users to tweak extraction rules and output formats on the fly.
 - **Structured Output**: Designed to return precise JSON data for specifications (Component, Value, Unit).
 
 ##  Technology Stack
@@ -87,17 +86,13 @@ The application follows a modular Service-Oriented Architecture:
 1.  **Hybrid Search (Semantic + Keyword)**:
     - Currently relies on dense vector retrieval. Combining this with BM25 (keyword search) would improve accuracy for exact part numbers or specific torque values that might not have strong semantic meaning.
 
-2.  **Recursive chunking / Parent Document Retrieval**:
-    - Break documents into smaller child chunks for retrieval but return the larger parent chunk to the LLM to provide more surrounding context.
 
-3.  **Multi-Modal RAG**:
+2.  **Multi-Modal RAG**:
     - Technical manuals have diagrams. Using a multi-modal embedding model (like CLIP or Gemini Pro Vision) to index diagrams and tables would allow users to ask "Show me the diagram for the caliper bolt".
 
-4.  **Metadata Filtering**:
+3.  **Metadata Filtering**:
     - Extract more metadata (Year, Make, Model, Section) during ingestion to allow filtered queries.
 
-5.  **Streaming Responses**:
-    - Implement Server-Sent Events (SSE) to stream the LLM's response token-by-token for a faster perceived latency.
+5.  **Dynamic System Promt**:
+    - Allowing the user to to add the dynamic system Prompt to get the desired result
 
-6.  **Response Caching**:
-    - Cache frequent queries (like "What is the oil capacity?") to avoid re-generating answers and save API costs.
