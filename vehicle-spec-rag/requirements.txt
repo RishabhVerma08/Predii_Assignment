@@ -1,0 +1,10 @@
+pymupdf
+tqdm
+spacy
+pandas
+sentence-transformers
+chromadb
+google-generativeai
+python-dotenv
+fastapi
+uvicorn
